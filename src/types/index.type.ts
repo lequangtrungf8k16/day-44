@@ -1,5 +1,9 @@
-// Thông tin user sau khi xác thực
-declare module "express";
-export interface Request {
-  userId: number;
+import "express-session";
+import { User } from "./user.type";
+
+// Mở rộng SessionData để chứa User
+declare module "express-session" {
+  export interface SessionData {
+    user?: User | null;
+  }
 }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đăng nhập hệ thống</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div class="w-full max-w-md bg-white rounded-lg shadow-md p-8">
+
+    <h2 class="text-2xl font-bold text-center text-blue-600 mb-6">ĐĂNG NHẬP</h2>
+
+    <!-- Thông báo khi nhập sai thông tin -->
+    <% if (messages.error && messages.error.length > 0) { %>
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 text-sm" role="alert">
+      <%= messages.error %>
+    </div>
+    <% } %>
+
+    <!-- Thông báo khi đăng xuất thành công -->
+    <% if (messages.success && messages.success.length > 0) { %>
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4 text-sm" role="alert">
+      <%= messages.success %>
+    </div>
+    <% } %>
+
+    <form action="/login" method="post" class="space-y-4">
+
+      <!-- Nhập Email -->
+      <div>
+        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+        <input type="email" id="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Nhập Email..." />
+      </div>
+      
+      <!-- Nhập Password -->
+      <div>
+        <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Mật khẩu</label>
+        <input type="password" id="password" name="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Nhập mật khẩu..." />
+      </div>     
+
+      <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-200 cursor-pointer">
+        Đăng Nhập
+      </button>
+
+      <!-- Nếu nhập sai thì gợi ý thông tin -->
+      <% if (messages.error && messages.error.length > 0) { %>
+      <div class="mt-4 p-2 bg-gray-50 border border-gray-200 rounded-md text-sm text-gray-600">        
+          <p>Email: <span class="font-mono font-bold text-blue-600">admin@gmail.com</span></p>
+          <p>Password: <span class="font-mono font-bold text-blue-600">123456</span></p>        
+      </div>
+      <% } %>
+
+    </form>
+
+  </div>
+</body>
+
+</html>
